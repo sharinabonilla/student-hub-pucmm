@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#001F5B">
+<meta name="description" content="Student Hub PUCMM — Tu ecosistema de aprendizaje en comunicación">
+<title>Student Hub · PUCMM Comunicación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root{
+  --navy:#001F5B;
+  --navy-mid:#0A2D7A;
+  --navy-light:#1a3f8f;
+  --gold:#C9A84C;
+  --gold-light:#F0D88A;
+  --gold-faint:#FBF5E6;
+  --white:#FFFFFF;
+  --gray-50:#F8F9FC;
+  --gray-100:#EEF1F8;
+  --gray-200:#D8DDE8;
+  --gray-400:#8892A4;
+  --gray-700:#374151;
+  --text:#1C2333;
+  --radius-sm:10px;
+  --radius:16px;
+  --radius-lg:22px;
+  --shadow:0 2px 12px rgba(0,31,91,.07);
+  --shadow-md:0 6px 24px rgba(0,31,91,.12);
+  --shadow-lg:0 16px 48px rgba(0,31,91,.18);
+  --font-display:'Fraunces',serif;
+  --font-body:'Inter',sans-serif;
+  --transition:.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);background:var(--gray-50);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
+
+/* ─── SKIP LINK (A11Y) ─── */
+.skip-link{position:absolute;top:-999px;left:16px;background:var(--gold);color:var(--navy);padding:8px 16px;border-radius:var(--radius-sm);font-weight:700;z-index:9999}
+.skip-link:focus{top:8px}
+
+/* ─── HEADER ─── */
+.site-header{
+  background:var(--navy);
+  position:sticky;top:0;z-index:100;
+  border-bottom:2px solid var(--gold);
+  backdrop-filter:blur(12px);
+}
+.header-inner{
+  max-width:1100px;margin:0 auto;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.logo-group{display:flex;align-items:center;gap:10px}
+.logo-badge{
+  width:38px;height:38px;background:var(--gold);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:800;color:var(--navy);flex-shrink:0;
+  font-family:var(--font-display);
+}
+.logo-text h1{font-size:.95rem;font-weight:700;color:var(--white);line-height:1.1}
+.logo-text span{font-size:.72rem;color:var(--gold-light);font-weight:400}
+.header-status{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(201,168,76,.12);
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:20px;padding:4px 10px;
+}
+.status-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.header-status span{font-size:.72rem;color:var(--gold-light);font-weight:500}
+
+/* ─── HERO ─── */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,#0d3a6e 100%);
+  padding:44px 20px 52px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(201,168,76,.12),transparent);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.35);
+  border-radius:20px;padding:4px 14px;
+  font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:16px;
+}
+.hero h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem,6vw,3rem);
+  font-weight:900;color:var(--white);
+  line-height:1.1;margin-bottom:10px;
+  letter-spacing:-.02em;
+}
+.hero h2 span{color:var(--gold)}
+.hero p{color:rgba(255,255,255,.72);font-size:clamp(.9rem,2.5vw,1.05rem);max-width:520px;margin:0 auto 28px}
+.hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 20px;border-radius:var(--radius-sm);
+  font-weight:600;font-size:.88rem;
+  transition:var(--transition);
+}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,168,76,.4)}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:var(--white)}
+.btn-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+
+/* ─── LAYOUT ─── */
+main{max-width:1100px;margin:0 auto;padding:32px 16px 80px}
+.section-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:16px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+
+/* ─── BENTO GRID ─── */
+.bento{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:32px}
+.bento-2{grid-column:span 2}
+
+.card{
+  background:var(--white);border-radius:var(--radius-lg);
+  padding:22px;border:1.5px solid var(--gray-200);
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+  position:relative;overflow:hidden;
+}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--gray-200)}
+.card-accent{border-top:3px solid var(--gold)}
+.card-navy{background:var(--navy);color:var(--white);border-color:transparent}
+.card-navy .card-title,.card-navy .card-desc{color:var(--white)}
+.card-navy .section-label{color:var(--gold-light)}
+.card-gold{background:linear-gradient(135deg,var(--gold-faint),var(--white));border-color:rgba(201,168,76,.3)}
+
+.card-icon{font-size:1.6rem;margin-bottom:10px;line-height:1}
+.card-title{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+.card-desc{font-size:.85rem;color:var(--gray-700);line-height:1.55}
+
+/* ─── QUICK LINKS ─── */
+.quick-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:32px}
+.quick-link{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius);padding:16px 14px;
+  text-align:center;
+  transition:var(--transition);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.quick-link:hover{border-color:var(--gold);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.quick-link:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.quick-link .ql-icon{font-size:1.7rem}
+.quick-link .ql-name{font-size:.8rem;font-weight:600;color:var(--text);line-height:1.3}
+.quick-link .ql-tag{font-size:.68rem;color:var(--gray-400);font-weight:500;
+  background:var(--gray-100);border-radius:20px;padding:2px 8px;margin-top:2px}
+
+/* ─── AI ARSENAL ─── */
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:32px}
+.ai-card{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius);padding:16px;
+  display:flex;align-items:flex-start;gap:12px;
+  transition:var(--transition);
+}
+.ai-card:hover{border-color:var(--navy-light);box-shadow:var(--shadow);transform:translateY(-1px)}
+.ai-card a:focus-visible{outline:3px solid var(--gold);border-radius:4px}
+.ai-icon{width:40px;height:40px;border-radius:10px;background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ai-info .ai-name{font-size:.88rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px}
+.ai-info .ai-cat{font-size:.72rem;color:var(--gray-400);margin-bottom:4px;font-weight:500}
+.ai-info .ai-desc{font-size:.78rem;color:var(--gray-700);line-height:1.45}
+.ai-badge{font-size:.62rem;background:var(--gold-faint);color:#7a5c00;
+  border:1px solid rgba(201,168,76,.4);border-radius:10px;padding:1px 6px;font-weight:600}
+
+/* ─── TABS ─── */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tab-btn{
+  padding:7px 16px;border-radius:var(--radius-sm);
+  font-size:.8rem;font-weight:600;
+  background:var(--gray-100);color:var(--gray-700);
+  border:1.5px solid transparent;
+  transition:var(--transition);
+}
+.tab-btn.active,.tab-btn:hover{background:var(--navy);color:var(--white)}
+.tab-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ─── RESOURCE LIST ─── */
+.resource-list{display:flex;flex-direction:column;gap:8px}
+.resource-item{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius-sm);padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transition:var(--transition);
+}
+.resource-item:hover{border-color:var(--gold);background:var(--gold-faint)}
+.resource-item a:focus-visible{outline:3px solid var(--gold);border-radius:4px}
+.res-info{flex:1}
+.res-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.res-meta{font-size:.75rem;color:var(--gray-400)}
+.res-arrow{color:var(--gold);font-size:1.1rem;font-weight:700;flex-shrink:0}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;
+  font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.badge-pdf{background:#fee2e2;color:#991b1b}
+.badge-docx{background:#dbeafe;color:#1e40af}
+.badge-pptx{background:#fce7f3;color:#9d174d}
+.badge-xlsx{background:#dcfce7;color:#166534}
+
+/* ─── CHATBOT ─── */
+.chatbot-wrap{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.chat-header{
+  background:var(--navy);padding:16px 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.chat-avatar{
+  width:38px;height:38px;background:var(--gold);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.chat-header-info h3{font-size:.92rem;font-weight:700;color:var(--white)}
+.chat-header-info p{font-size:.72rem;color:rgba(255,255,255,.6)}
+.chat-messages{
+  height:320px;overflow-y:auto;padding:20px;
+  display:flex;flex-direction:column;gap:12px;
+  background:var(--gray-50);
+}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-track{background:transparent}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--gray-200);border-radius:4px}
+.msg{max-width:80%;animation:fadeUp .22s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg-bot{align-self:flex-start}
+.msg-user{align-self:flex-end}
+.msg-bubble{
+  padding:10px 14px;border-radius:14px;font-size:.85rem;line-height:1.55;
+}
+.msg-bot .msg-bubble{background:var(--white);color:var(--text);border:1.5px solid var(--gray-200);border-bottom-left-radius:4px}
+.msg-user .msg-bubble{background:var(--navy);color:var(--white);border-bottom-right-radius:4px}
+.msg-time{font-size:.65rem;color:var(--gray-400);margin-top:3px;padding:0 4px}
+.msg-user .msg-time{text-align:right}
+.chat-input-area{
+  padding:14px 16px;background:var(--white);
+  border-top:1.5px solid var(--gray-100);
+  display:flex;gap:8px;align-items:flex-end;
+}
+.chat-input{
+  flex:1;padding:10px 14px;border-radius:var(--radius-sm);
+  border:1.5px solid var(--gray-200);font-family:var(--font-body);font-size:.88rem;
+  background:var(--gray-50);color:var(--text);resize:none;
+  transition:var(--transition);min-height:42px;max-height:120px;
+}
+.chat-input:focus{outline:none;border-color:var(--navy);background:var(--white)}
+.chat-send{
+  width:42px;height:42px;background:var(--navy);color:var(--white);
+  border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;
+  transition:var(--transition);flex-shrink:0;
+}
+.chat-send:hover{background:var(--navy-light);transform:scale(1.05)}
+.chat-send:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.typing{display:flex;gap:4px;align-items:center;padding:10px 14px}
+.typing span{width:7px;height:7px;background:var(--gray-400);border-radius:50%;animation:bounce .8s infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.quick-questions{padding:8px 16px 0;display:flex;flex-wrap:wrap;gap:6px}
+.qq-btn{
+  font-size:.72rem;padding:5px 11px;border-radius:20px;
+  background:var(--gray-100);border:1.5px solid var(--gray-200);
+  color:var(--gray-700);font-weight:500;transition:var(--transition);
+}
+.qq-btn:hover{background:var(--gold-faint);border-color:var(--gold);color:var(--text)}
+
+/* ─── REMINDER FORM ─── */
+.form-card{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  border-radius:var(--radius-lg);padding:28px;color:var(--white);
+}
+.form-card h3{font-size:1.1rem;font-weight:700;margin-bottom:6px;color:var(--white)}
+.form-card p{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+.form-group label{display:block;font-size:.75rem;font-weight:600;color:var(--gold-light);margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
+.form-control{
+  width:100%;padding:10px 14px;border-radius:var(--radius-sm);
+  border:1.5px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08);color:var(--white);
+  font-family:var(--font-body);font-size:.88rem;
+  transition:var(--transition);
+}
+.form-control:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.12)}
+.form-control::placeholder{color:rgba(255,255,255,.35)}
+select.form-control option{background:var(--navy);color:var(--white)}
+.form-full{grid-column:1/-1}
+.btn-send{
+  display:flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--navy);
+  padding:11px 22px;border-radius:var(--radius-sm);
+  font-weight:700;font-size:.9rem;transition:var(--transition);
+}
+.btn-send:hover{background:var(--gold-light);transform:translateY(-1px)}
+.success-msg{
+  display:none;background:rgba(74,222,128,.15);border:1.5px solid rgba(74,222,128,.4);
+  border-radius:var(--radius-sm);padding:12px 16px;
+  font-size:.88rem;color:#4ade80;margin-top:12px;
+}
+
+/* ─── TALLER ESCRITURA ─── */
+.writing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-bottom:32px}
+.writing-card{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius);padding:18px;
+  transition:var(--transition);display:flex;flex-direction:column;gap:6px;
+}
+.writing-card:hover{border-color:var(--gold);box-shadow:var(--shadow);transform:translateY(-1px)}
+.wc-emoji{font-size:1.5rem}
+.wc-title{font-size:.9rem;font-weight:700;color:var(--text)}
+.wc-desc{font-size:.78rem;color:var(--gray-700);flex:1;line-height:1.45}
+.wc-level{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:10px;align-self:flex-start;margin-top:4px}
+.level-basico{background:#dcfce7;color:#166534}
+.level-intermedio{background:#dbeafe;color:#1e40af}
+.level-avanzado{background:#fce7f3;color:#9d174d}
+.wc-link{font-size:.78rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:4px;margin-top:6px}
+.wc-link:hover{color:var(--gold)}
+
+/* ─── LINKS DIRECTOS (Oracle / PVA) ─── */
+.deeplink-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:32px}
+.deeplink{
+  background:var(--white);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius);padding:18px 14px;
+  text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;
+  transition:var(--transition);
+}
+.deeplink:hover{border-color:var(--navy);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.deeplink:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dl-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.dl-navy{background:var(--navy)}
+.dl-gold{background:var(--gold-faint);border:1.5px solid rgba(201,168,76,.3)}
+.dl-green{background:#dcfce7}
+.dl-name{font-size:.85rem;font-weight:700;color:var(--text);line-height:1.2}
+.dl-sub{font-size:.72rem;color:var(--gray-400)}
+
+/* ─── TOGGLE ─── */
+.toggle-wrap{margin-bottom:10px}
+.toggle-btn{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  background:var(--gray-100);border:1.5px solid var(--gray-200);
+  border-radius:var(--radius-sm);padding:12px 16px;
+  font-size:.88rem;font-weight:600;color:var(--text);
+  transition:var(--transition);
+}
+.toggle-btn:hover{background:var(--gold-faint);border-color:var(--gold)}
+.toggle-btn[aria-expanded="true"]{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.toggle-icon{transition:transform var(--transition)}
+.toggle-btn[aria-expanded="true"] .toggle-icon{transform:rotate(180deg)}
+.toggle-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .32s cubic-bezier(.4,0,.2,1);
+}
+.toggle-body.open{max-height:600px}
+.toggle-content{padding:14px 16px;background:var(--white);border:1.5px solid var(--gray-200);border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--navy);color:rgba(255,255,255,.6);
+  text-align:center;padding:20px 16px;
+  font-size:.78rem;border-top:2px solid var(--gold);
+}
+footer strong{color:var(--gold)}
+footer a{color:var(--gold-light)}footer a:hover{color:var(--gold)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:640px){
+  .bento-2{grid-column:span 1}
+  .hero h2{font-size:1.8rem}
+  main{padding:24px 12px 60px}
+}
+@media(min-width:768px){
+  .bento{grid-template-columns:repeat(3,1fr)}
+}
+
+/* ─── FOCUS VISIBLE ─── */
+*:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+/* ─── REDUCED MOTION ─── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <div class="logo-group">
+      <div class="logo-badge" aria-hidden="true">SH</div>
+      <div class="logo-text">
+        <h1>Student Hub</h1>
+        <span>Escuela de Comunicación · PUCMM Santiago</span>
+      </div>
+    </div>
+    <div class="header-status" aria-label="Estado del sistema: activo">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>En línea</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-eyebrow" aria-hidden="true">🎓 Tu ecosistema de aprendizaje</div>
+  <h2 id="hero-title">Tu <span>Radar</span><br>de Comunicación</h2>
+  <p>Recursos, herramientas IA, materiales y tu asistente 24/7 — todo en un solo lugar.</p>
+  <div class="hero-actions">
+    <a href="#quick-nav" class="btn btn-gold">🚀 Ir al aula virtual</a>
+    <a href="#chatbot" class="btn btn-outline">💬 Pregúntale al Bot</a>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main id="main" tabindex="-1">
+
+  <!-- QUICK NAV -->
+  <section id="quick-nav" aria-labelledby="nav-title">
+    <p class="section-label" id="nav-title">🗂️ Accesos Directos</p>
+    <div class="deeplink-grid" role="list">
+      <a href="https://campusvirtual.pucmm.edu.do/moodle/my/" class="deeplink" role="listitem" target="_blank" rel="noopener" aria-label="Ir al Campus Virtual PVA">
+        <div class="dl-icon dl-navy">📚</div>
+        <div class="dl-name">Campus Virtual</div>
+        <div class="dl-sub">PVA · Moodle</div>
+      </a>
+      <a href="https://micampus.pucmm.edu.do" class="deeplink" role="listitem" target="_blank" rel="noopener" aria-label="Ir a Mi Campus · Oracle Campus Solutions">
+        <div class="dl-icon dl-gold">📊</div>
+        <div class="dl-name">Mi Campus</div>
+        <div class="dl-sub">Notas · Trámites</div>
+      </a>
+      <a href="https://teams.microsoft.com" class="deeplink" role="listitem" target="_blank" rel="noopener" aria-label="Abrir Microsoft Teams">
+        <div class="dl-icon dl-navy">💬</div>
+        <div class="dl-name">MS Teams</div>
+        <div class="dl-sub">Clases · Mensajes</div>
+      </a>
+      <a href="https://onedrive.live.com" class="deeplink" role="listitem" target="_blank" rel="noopener" aria-label="Ir a OneDrive – Materiales de clase">
+        <div class="dl-icon dl-green">📁</div>
+        <div class="dl-name">Materiales</div>
+        <div class="dl-sub">OneDrive · Solo lectura</div>
+      </a>
+      <a href="https://pucmm.edu.do" class="deeplink" role="listitem" target="_blank" rel="noopener" aria-label="Ir al sitio web de la PUCMM">
+        <div class="dl-icon dl-gold">🏛️</div>
+        <div class="dl-name">PUCMM.edu.do</div>
+        <div class="dl-sub">Sitio oficial</div>
+      </a>
+      <a href="#solicitar" class="deeplink" role="listitem" aria-label="Solicitar material que falta en PVA">
+        <div class="dl-icon dl-navy">📬</div>
+        <div class="dl-name">Pide Material</div>
+        <div class="dl-sub">Solicitud a la profe</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- RESOURCES HUB -->
+  <section id="recursos" aria-labelledby="recursos-title">
+    <p class="section-label" id="recursos-title">📁 Hub de Recursos</p>
+    <div class="tabs" role="tablist" aria-label="Categorías de recursos">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-todos" id="btn-todos" onclick="switchTab(this,'tab-todos')">Todos</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-crisis" id="btn-crisis" onclick="switchTab(this,'tab-crisis')">⚡ Crisis</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-tesis" id="btn-tesis" onclick="switchTab(this,'tab-tesis')">🔬 Tesis</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-produccion" id="btn-produccion" onclick="switchTab(this,'tab-produccion')">🎙️ Producción</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-marca" id="btn-marca" onclick="switchTab(this,'tab-marca')">✨ Marca</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-apa" id="btn-apa" onclick="switchTab(this,'tab-apa')">📝 APA 7</button>
+    </div>
+
+    <div id="tab-todos" class="tab-panel active" role="tabpanel" aria-labelledby="btn-todos">
+      <div class="resource-list">
+        <div class="resource-item"><div class="res-info"><div class="res-title">📄 Plantilla APA 7 — Referencias</div><div class="res-meta">Tesis · DOCX · <span class="badge badge-docx">DOCX</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir plantilla APA 7">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">⚡ Caso Stanley Cup — Gestión de Crisis</div><div class="res-meta">Método Harvard · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir caso Stanley Cup">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">📊 Encuesta de Percepción de Marca</div><div class="res-meta">Tesis / Jumbo · Sirena · <span class="badge badge-xlsx">XLSX</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir plantilla encuesta percepción">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🎙️ Rúbrica Podcast en Vivo</div><div class="res-meta">Producción · Roles · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir rúbrica podcast">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🗺️ Guía SCCT — Comunicación de Crisis</div><div class="res-meta">Teoría · Modelos · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir guía SCCT">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">✨ Plantilla Manual de Marca</div><div class="res-meta">Identidad Corporativa · <span class="badge badge-pptx">PPTX</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir plantilla manual de marca">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🏁 Modelo RACE — Planificación</div><div class="res-meta">Planes de Comunicación · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow" aria-label="Abrir guía modelo RACE">→</a></div>
+      </div>
+    </div>
+
+    <div id="tab-crisis" class="tab-panel" role="tabpanel" aria-labelledby="btn-crisis">
+      <div class="resource-list">
+        <div class="resource-item"><div class="res-info"><div class="res-title">⚡ Caso Stanley Cup — Análisis Harvard</div><div class="res-meta">Gestión de Crisis · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🗺️ Guía SCCT con ejemplos dominicanos</div><div class="res-meta">Teoría Coombs · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">📋 Rúbrica Análisis de Caso</div><div class="res-meta">Evaluación · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+      </div>
+    </div>
+
+    <div id="tab-tesis" class="tab-panel" role="tabpanel" aria-labelledby="btn-tesis">
+      <div class="resource-list">
+        <div class="resource-item"><div class="res-info"><div class="res-title">📄 Plantilla APA 7 — Referencias</div><div class="res-meta">Normas · <span class="badge badge-docx">DOCX</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">📊 Encuesta Percepción de Marca</div><div class="res-meta">Jumbo / Sirena / Brugal · <span class="badge badge-xlsx">XLSX</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">📖 Guía Normas APA 7 (externa)</div><div class="res-meta">normas-apa.org · Web</div></div><a href="https://normas-apa.org" target="_blank" rel="noopener" class="res-arrow">↗</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🔍 Scribbr — Generador APA</div><div class="res-meta">scribbr.com · Web</div></div><a href="https://www.scribbr.com/apa-style/" target="_blank" rel="noopener" class="res-arrow">↗</a></div>
+      </div>
+    </div>
+
+    <div id="tab-produccion" class="tab-panel" role="tabpanel" aria-labelledby="btn-produccion">
+      <div class="resource-list">
+        <div class="resource-item"><div class="res-info"><div class="res-title">🎙️ Rúbrica Podcast en Vivo</div><div class="res-meta">Roles + Técnica · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🎬 Rúbrica Proyecto Audiovisual</div><div class="res-meta">Técnica + Creatividad · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🎧 ElevenLabs — Práctica de locución</div><div class="res-meta">elevenlabs.io · Herramienta IA</div></div><a href="https://elevenlabs.io" target="_blank" rel="noopener" class="res-arrow">↗</a></div>
+      </div>
+    </div>
+
+    <div id="tab-marca" class="tab-panel" role="tabpanel" aria-labelledby="btn-marca">
+      <div class="resource-list">
+        <div class="resource-item"><div class="res-info"><div class="res-title">✨ Plantilla Manual de Marca</div><div class="res-meta">Identidad Visual · <span class="badge badge-pptx">PPTX</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🏁 Modelo RACE</div><div class="res-meta">Planes de Comunicación · <span class="badge badge-pdf">PDF</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">📋 Plan de Comunicación Base</div><div class="res-meta">Plantilla completa · <span class="badge badge-docx">DOCX</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+      </div>
+    </div>
+
+    <div id="tab-apa" class="tab-panel" role="tabpanel" aria-labelledby="btn-apa">
+      <div class="resource-list">
+        <div class="resource-item"><div class="res-info"><div class="res-title">📖 Guía Normas APA 7 — Completa</div><div class="res-meta">normas-apa.org · PDF oficial</div></div><a href="https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf" target="_blank" rel="noopener" class="res-arrow">↗</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">🔍 Scribbr APA Style</div><div class="res-meta">Generador de citas + ejemplos</div></div><a href="https://www.scribbr.com/apa-style/" target="_blank" rel="noopener" class="res-arrow">↗</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">✏️ Grammarly Citations APA</div><div class="res-meta">Citas automáticas en inglés</div></div><a href="https://www.grammarly.com/citations/apa" target="_blank" rel="noopener" class="res-arrow">↗</a></div>
+        <div class="resource-item"><div class="res-info"><div class="res-title">📄 Plantilla APA 7 — Word</div><div class="res-meta">OneDrive · <span class="badge badge-docx">DOCX</span></div></div><a href="https://onedrive.live.com" class="res-arrow">→</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI ARSENAL -->
+  <section id="arsenal" aria-labelledby="arsenal-title">
+    <p class="section-label" id="arsenal-title">🤖 Arsenal de IA</p>
+    <div class="ai-grid" role="list">
+      <!-- Writing -->
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">✍️</div>
+        <div class="ai-info">
+          <div class="ai-name">ChatGPT <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Escritura · Análisis</div>
+          <div class="ai-desc">Redacción, lluvia de ideas, análisis de casos y síntesis de textos.</div>
+          <a href="https://chat.openai.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">🧠</div>
+        <div class="ai-info">
+          <div class="ai-name">Claude <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Escritura · Documentos largos</div>
+          <div class="ai-desc">Analiza PDFs completos, redacta académicamente y resume con precisión.</div>
+          <a href="https://claude.ai" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">💎</div>
+        <div class="ai-info">
+          <div class="ai-name">Gemini <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Investigación · Google</div>
+          <div class="ai-desc">Búsqueda integrada con Google, síntesis de fuentes actuales.</div>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <!-- Research -->
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">📓</div>
+        <div class="ai-info">
+          <div class="ai-name">NotebookLM <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Tesis · Investigación</div>
+          <div class="ai-desc">Sube tus fuentes y genera resúmenes, preguntas y hasta podcasts.</div>
+          <a href="https://notebooklm.google.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">🔍</div>
+        <div class="ai-info">
+          <div class="ai-name">Perplexity <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Investigación con citas</div>
+          <div class="ai-desc">Respuestas con fuentes verificadas. Ideal para marco teórico.</div>
+          <a href="https://perplexity.ai" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <!-- Writing tools -->
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">✅</div>
+        <div class="ai-info">
+          <div class="ai-name">Grammarly <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Redacción · Corrección</div>
+          <div class="ai-desc">Gramática, estilo y generador de citas APA en inglés.</div>
+          <a href="https://grammarly.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">📚</div>
+        <div class="ai-info">
+          <div class="ai-name">Scribbr</div>
+          <div class="ai-cat">APA 7 · Citas</div>
+          <div class="ai-desc">Genera referencias APA 7 automáticamente. Imprescindible para tesis.</div>
+          <a href="https://scribbr.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <!-- Creative -->
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">🖼️</div>
+        <div class="ai-info">
+          <div class="ai-name">Midjourney</div>
+          <div class="ai-cat">Imagen · Publicidad</div>
+          <div class="ai-desc">Genera imágenes para campañas, presentaciones y proyectos creativos.</div>
+          <a href="https://midjourney.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">🎙️</div>
+        <div class="ai-info">
+          <div class="ai-name">ElevenLabs <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Audio · Podcast</div>
+          <div class="ai-desc">Síntesis de voz realista para producciones, podcasts y narraciones.</div>
+          <a href="https://elevenlabs.io" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <!-- Productivity -->
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">📝</div>
+        <div class="ai-info">
+          <div class="ai-name">Notion AI <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Organización · Notas</div>
+          <div class="ai-desc">Gestiona proyectos, notas e investigaciones con IA integrada.</div>
+          <a href="https://notion.so" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">🗺️</div>
+        <div class="ai-info">
+          <div class="ai-name">Miro <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Visual · Colaboración</div>
+          <div class="ai-desc">Pizarra digital para mapas mentales, wireframes y planificación grupal.</div>
+          <a href="https://miro.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+      <div class="ai-card" role="listitem">
+        <div class="ai-icon">🍌</div>
+        <div class="ai-info">
+          <div class="ai-name">Nano BANANA <span class="ai-badge">Gratis</span></div>
+          <div class="ai-cat">Productividad académica</div>
+          <div class="ai-desc">Organización y productividad diseñada para estudiantes.</div>
+          <a href="https://nanobanana.com" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:600;color:var(--navy);display:block;margin-top:6px">Abrir →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALLER DE ESCRITURA -->
+  <section id="taller" aria-labelledby="taller-title">
+    <p class="section-label" id="taller-title">✍️ Taller de Escritura</p>
+    <div class="writing-grid" role="list">
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">📄</div>
+        <div class="wc-title">Cómo escribir un ensayo académico</div>
+        <div class="wc-desc">Estructura, argumentación sólida y citación APA 7 desde cero.</div>
+        <span class="wc-level level-basico">Básico</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">🏢</div>
+        <div class="wc-title">Redactar un informe corporativo</div>
+        <div class="wc-desc">Formato profesional con executive summary y secciones clave.</div>
+        <span class="wc-level level-intermedio">Intermedio</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">🖥️</div>
+        <div class="wc-title">Crear una presentación académica</div>
+        <div class="wc-desc">Diseño de slides efectivos: visuales > texto. Reglas que importan.</div>
+        <span class="wc-level level-basico">Básico</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">💼</div>
+        <div class="wc-title">Portafolio profesional</div>
+        <div class="wc-desc">Estructura para portafolios digitales en Notion, Canva o PDF.</div>
+        <span class="wc-level level-intermedio">Intermedio</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">✨</div>
+        <div class="wc-title">Diseñar un Manual de Marca</div>
+        <div class="wc-desc">Paso a paso: logotipo, tipografía, paleta de color, usos correctos e incorrectos.</div>
+        <span class="wc-level level-avanzado">Avanzado</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">🎬</div>
+        <div class="wc-title">Proyecto audiovisual</div>
+        <div class="wc-desc">Preproducción, producción y postproducción: estructura completa.</div>
+        <span class="wc-level level-intermedio">Intermedio</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">📢</div>
+        <div class="wc-title">Brief creativo de campaña</div>
+        <div class="wc-desc">Cómo escribir un brief publicitario que inspire a tu equipo creativo.</div>
+        <span class="wc-level level-intermedio">Intermedio</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver guía →</a>
+      </div>
+      <div class="writing-card" role="listitem">
+        <div class="wc-emoji">☑️</div>
+        <div class="wc-title">Checklist antes de entregar</div>
+        <div class="wc-desc">Formato, citas, ortografía, interlineado. No entregues sin revisar esto.</div>
+        <span class="wc-level level-basico">Básico</span>
+        <a href="https://onedrive.live.com" class="wc-link" target="_blank" rel="noopener">Ver lista →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT IA -->
+  <section id="chatbot" aria-labelledby="chatbot-title">
+    <p class="section-label" id="chatbot-title">💬 Bot Asistente 24/7</p>
+    <div class="chatbot-wrap" role="region" aria-label="Chat con el asistente de clase">
+      <div class="chat-header">
+        <div class="chat-avatar" aria-hidden="true">🤖</div>
+        <div class="chat-header-info">
+          <h3>Asistente de Comunicación PUCMM</h3>
+          <p>Responde en segundos · Disponible 24/7</p>
+        </div>
+      </div>
+      <div class="quick-questions" aria-label="Preguntas rápidas sugeridas">
+        <button class="qq-btn" onclick="sendQuick(this)">¿Dónde veo mis notas?</button>
+        <button class="qq-btn" onclick="sendQuick(this)">¿Cómo cito en APA 7?</button>
+        <button class="qq-btn" onclick="sendQuick(this)">¿Qué es el SCCT?</button>
+        <button class="qq-btn" onclick="sendQuick(this)">Material del podcast</button>
+        <button class="qq-btn" onclick="sendQuick(this)">Herramientas para tesis</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Mensajes del chat">
+        <div class="msg msg-bot">
+          <div class="msg-bubble">¡Hola! 👋 Soy tu asistente de la Escuela de Comunicación. Puedo ayudarte con dudas sobre materias, recursos, APA 7, herramientas IA y más. ¿En qué te ayudo hoy?</div>
+          <div class="msg-time">Ahora</div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chatInput" placeholder="Escribe tu pregunta aquí..." rows="1" aria-label="Escribe tu mensaje" onkeydown="handleEnter(event)"></textarea>
+        <button class="chat-send" id="chatSendBtn" onclick="sendMessage()" aria-label="Enviar mensaje">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLICITAR MATERIAL -->
+  <section id="solicitar" aria-labelledby="solicitar-title" style="margin-top:12px">
+    <p class="section-label" id="solicitar-title">📬 Pide Material</p>
+    <div class="form-card">
+      <h3>¿No encuentras algo en la PVA?</h3>
+      <p>Completa este formulario y la profe recibirá una notificación automática en Teams. Subimos el material lo antes posible ✨</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="req-nombre">Tu nombre</label>
+          <input type="text" id="req-nombre" class="form-control" placeholder="María García" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="req-matricula">Matrícula</label>
+          <input type="text" id="req-matricula" class="form-control" placeholder="2024XXXX">
+        </div>
+        <div class="form-group">
+          <label for="req-materia">Materia</label>
+          <select id="req-materia" class="form-control">
+            <option value="">— Selecciona —</option>
+            <option>Gestión de Comunicación en Tiempos de Crisis</option>
+            <option>Teoría de la Comunicación</option>
+            <option>Comunicación Digital</option>
+            <option>Marketing Digital</option>
+            <option>Publicidad</option>
+            <option>Asesoría de Tesis</option>
+            <option>Opinión Pública</option>
+            <option>Identidad e Imagen Corporativa</option>
+            <option>Diseño de Planes de Comunicación</option>
+            <option>Comunicación Interna y Externa</option>
+            <option>Estudio de Medios</option>
+            <option>Gestión del Mercadeo en Comunicación Corporativa</option>
+            <option>Otra materia</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="req-tipo">Tipo de material</label>
+          <select id="req-tipo" class="form-control">
+            <option value="">— Selecciona —</option>
+            <option>Sílabo / Programa</option>
+            <option>Lectura / Artículo</option>
+            <option>Presentación de clase</option>
+            <option>Rúbrica de evaluación</option>
+            <option>Plantilla de trabajo</option>
+            <option>Caso de estudio</option>
+            <option>Guía / Tutorial</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group form-full">
+          <label for="req-descripcion">¿Qué necesitas exactamente?</label>
+          <textarea id="req-descripcion" class="form-control" rows="3" placeholder="Ej: La rúbrica actualizada del examen práctico de podcast del tema 6..." style="resize:vertical"></textarea>
+        </div>
+      </div>
+      <button class="btn-send" onclick="submitRequest()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Enviar solicitud
+      </button>
+      <div class="success-msg" id="successMsg" role="alert">
+        ✅ ¡Solicitud enviada! La profe recibirá una notificación en Teams. Revisa la PVA en las próximas 24-48 horas.
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ TOGGLES -->
+  <section id="faq" aria-labelledby="faq-title" style="margin-top:32px">
+    <p class="section-label" id="faq-title">❓ Preguntas Frecuentes</p>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" aria-expanded="false" aria-controls="faq1-body" onclick="toggleFAQ(this)">
+        <span>📚 ¿Dónde encuentro el sílabo de mi materia?</span>
+        <span class="toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="toggle-body" id="faq1-body" role="region">
+        <div class="toggle-content">El sílabo está en la <strong>PVA (Campus Virtual)</strong> dentro de tu curso. Ingresa en <a href="https://campusvirtual.pucmm.edu.do/moodle/my/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">campusvirtual.pucmm.edu.do</a> → selecciona tu materia → sección "Presentación del Curso".</div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" aria-expanded="false" aria-controls="faq2-body" onclick="toggleFAQ(this)">
+        <span>📊 ¿Dónde veo mis notas?</span>
+        <span class="toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="toggle-body" id="faq2-body" role="region">
+        <div class="toggle-content">Tus calificaciones oficiales están en <strong>Campus Solutions (Mi Campus)</strong>: <a href="https://micampus.pucmm.edu.do" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">micampus.pucmm.edu.do</a>. Las notas parciales pueden aparecer también en la PVA dependiendo de la materia.</div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" aria-expanded="false" aria-controls="faq3-body" onclick="toggleFAQ(this)">
+        <span>📝 ¿Cómo cito una página web en APA 7?</span>
+        <span class="toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="toggle-body" id="faq3-body" role="region">
+        <div class="toggle-content">
+          <strong>Formato:</strong> Apellido, I. (Año, día mes). Título del artículo. <em>Nombre del Sitio.</em> URL<br><br>
+          <strong>Ejemplo:</strong> García, M. (2024, 15 enero). Marketing digital en República Dominicana. <em>Forbes RD.</em> https://...<br><br>
+          Usa <a href="https://www.scribbr.com/apa-style/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">Scribbr</a> para generar citas automáticamente.
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" aria-expanded="false" aria-controls="faq4-body" onclick="toggleFAQ(this)">
+        <span>⚡ ¿Qué es el modelo SCCT?</span>
+        <span class="toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="toggle-body" id="faq4-body" role="region">
+        <div class="toggle-content">El <strong>SCCT</strong> (Situational Crisis Communication Theory) de Timothy Coombs clasifica las crisis en 3 clusters: <strong>víctima</strong> (baja responsabilidad), <strong>accidental</strong> (media) y <strong>prevenible</strong> (alta). Define estrategias de respuesta según la responsabilidad percibida y el historial de la organización. Descarga la guía completa en el Hub de Recursos.</div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" aria-expanded="false" aria-controls="faq5-body" onclick="toggleFAQ(this)">
+        <span>🎙️ ¿Cómo me preparo para el examen de podcast?</span>
+        <span class="toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="toggle-body" id="faq5-body" role="region">
+        <div class="toggle-content">Revisa la <strong>Rúbrica Podcast en Vivo</strong> en el Hub (pestaña Producción). Incluye distribución de roles, criterios técnicos y de contenido. Practica locución con <a href="https://elevenlabs.io" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">ElevenLabs</a> y organiza la reunión de preproducción en Miro.</div>
+      </div>
+    </div>
+
+    <div class="toggle-wrap">
+      <button class="toggle-btn" aria-expanded="false" aria-controls="faq6-body" onclick="toggleFAQ(this)">
+        <span>🔬 ¿Qué herramientas recomiendas para la tesis?</span>
+        <span class="toggle-icon" aria-hidden="true">▼</span>
+      </button>
+      <div class="toggle-body" id="faq6-body" role="region">
+        <div class="toggle-content">
+          <strong>Stack recomendado para tesis:</strong><br>
+          📓 <strong>NotebookLM</strong> — Sube tus fuentes y analízalas con IA<br>
+          🔍 <strong>Perplexity</strong> — Investigación con citas verificadas<br>
+          📚 <strong>Scribbr</strong> — Generador de referencias APA 7<br>
+          ✅ <strong>Grammarly</strong> — Revisión de redacción (en inglés)<br>
+          📄 <strong>Plantilla APA 7</strong> — Disponible en el Hub de Recursos
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <p><strong>Student Hub · Escuela de Comunicación PUCMM Santiago</strong></p>
+  <p style="margin-top:4px">
+    <a href="https://pucmm.edu.do" target="_blank" rel="noopener">pucmm.edu.do</a> · 
+    <a href="https://campusvirtual.pucmm.edu.do/moodle/my/" target="_blank" rel="noopener">PVA</a> · 
+    <a href="https://micampus.pucmm.edu.do" target="_blank" rel="noopener">Mi Campus</a>
+  </p>
+  <p style="margin-top:6px;font-size:.72rem;opacity:.6">Plataforma de uso académico interno · Escuela de Comunicación</p>
+</footer>
+
+<script>
+// ─── TABS ───
+function switchTab(btn, panelId) {
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected','false');
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
+  document.getElementById(panelId).classList.add('active');
+}
+
+// ─── TOGGLES ───
+function toggleFAQ(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  const bodyId = btn.getAttribute('aria-controls');
+  const body = document.getElementById(bodyId);
+  btn.setAttribute('aria-expanded', !expanded);
+  body.classList.toggle('open', !expanded);
+}
+
+// ─── CHAT ───
+const FAQs = {
+  'nota': 'Tus calificaciones oficiales están en **Campus Solutions**: [micampus.pucmm.edu.do](https://micampus.pucmm.edu.do). Las notas parciales también pueden aparecer en la PVA según la materia. 📊',
+  'calificac': 'Para ver tus notas oficiales ve a **Mi Campus**: [micampus.pucmm.edu.do](https://micampus.pucmm.edu.do) 📊',
+  'apa': 'Para citar en **APA 7** usa el formato: Apellido, I. (Año). *Título*. Editorial/URL. Te recomiendo usar [Scribbr](https://scribbr.com) para generar citas automáticas. ¿Qué tipo de fuente necesitas citar? 📝',
+  'scct': 'El **SCCT** (Coombs) clasifica las crisis en 3 clusters: víctima (baja responsabilidad), accidental (media) y prevenible (alta). Cada cluster tiene estrategias específicas. Descarga la guía completa en el Hub → pestaña Crisis ⚡',
+  'podcast': 'Para el examen de podcast revisa la **Rúbrica Podcast en Vivo** en el Hub (pestaña Producción). Incluye distribución de roles y criterios técnicos. ¡Practica con ElevenLabs! 🎙️',
+  'tesis': 'Para tu tesis te recomiendo: 📓 **NotebookLM** (analiza tus fuentes), 🔍 **Perplexity** (investigación con citas), 📚 **Scribbr** (referencias APA 7) y la **Plantilla APA 7** del Hub. ¡Mucho éxito! 🎓',
+  'sílabo': 'El sílabo está en la **PVA** dentro de tu curso. Ingresa en [campusvirtual.pucmm.edu.do](https://campusvirtual.pucmm.edu.do/moodle/my/) → selecciona tu materia → "Presentación del Curso". 📚',
+  'silabo': 'El sílabo está en la **PVA** dentro de tu curso. Ingresa en [campusvirtual.pucmm.edu.do](https://campusvirtual.pucmm.edu.do/moodle/my/) → selecciona tu materia → "Presentación del Curso". 📚',
+  'material': '¿No encuentras el material en la PVA? Usa el formulario "📬 Pide Material" más abajo en esta página y la profe recibirá una notificación automática en Teams. ¡Suele resolverse en 24-48 horas! 🚀',
+  'trámite': 'Los trámites administrativos (certificaciones, constancias, etc.) se gestionan en **Campus Solutions**: [micampus.pucmm.edu.do](https://micampus.pucmm.edu.do) → módulo de Servicios al Estudiante. 🏛️',
+  'tramite': 'Los trámites administrativos se gestionan en **Campus Solutions**: [micampus.pucmm.edu.do](https://micampus.pucmm.edu.do) → módulo de Servicios al Estudiante. 🏛️',
+  'pva': 'Accede a la PVA con tu usuario y contraseña institucional PUCMM en [campusvirtual.pucmm.edu.do](https://campusvirtual.pucmm.edu.do/moodle/my/) (los mismos del correo @ce.pucmm.edu.do). 🔑',
+  'teams': 'Busca el equipo de tu materia en **Microsoft Teams** con tu cuenta PUCMM (@ce.pucmm.edu.do). Si no tienes acceso, escríbele directamente a la profesora por Teams. 💬',
+  'rúbrica': 'Las rúbricas están en el **Hub de Recursos** según la materia. Si no aparece la que buscas, solicítala con el formulario "📬 Pide Material". 📋',
+  'rubrica': 'Las rúbricas están en el **Hub de Recursos** según la materia. Si no aparece la que buscas, solicítala con el formulario "📬 Pide Material". 📋',
+};
+
+function getBotResponse(msg) {
+  const lower = msg.toLowerCase();
+  for (const [key, response] of Object.entries(FAQs)) {
+    if (lower.includes(key)) return response;
+  }
+  return 'Gracias por tu pregunta 🤔 No tengo esa respuesta específica en mi base de conocimiento actual. Te recomiendo:\n• Revisar el sílabo en la PVA\n• Consultarle directamente a la profesora por Teams\n• Usar el formulario "📬 Pide Material" si buscas un recurso específico\n\n¿Puedo ayudarte con algo más?';
+}
+
+function formatMsg(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline">$1</a>')
+    .replace(/\n/g, '<br>');
+}
+
+function appendMsg(text, type) {
+  const box = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg msg-${type}`;
+  const now = new Date().toLocaleTimeString('es-DO',{hour:'2-digit',minute:'2-digit'});
+  div.innerHTML = `<div class="msg-bubble">${formatMsg(text)}</div><div class="msg-time">${now}</div>`;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function showTyping() {
+  const box = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg msg-bot';
+  div.id = 'typingIndicator';
+  div.innerHTML = '<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const btn = document.getElementById('chatSendBtn');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  btn.disabled = true;
+  appendMsg(msg, 'user');
+  showTyping();
+  await new Promise(r => setTimeout(r, 900 + Math.random()*600));
+  removeTyping();
+  const response = getBotResponse(msg);
+  appendMsg(response, 'bot');
+  btn.disabled = false;
+  input.focus();
+}
+
+function sendQuick(btn) {
+  document.getElementById('chatInput').value = btn.textContent;
+  sendMessage();
+}
+
+function handleEnter(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+// ─── FORM ───
+function submitRequest() {
+  const nombre = document.getElementById('req-nombre').value.trim();
+  const materia = document.getElementById('req-materia').value;
+  const desc = document.getElementById('req-descripcion').value.trim();
+  if (!nombre || !materia || !desc) {
+    alert('Por favor completa: tu nombre, la materia y la descripción del material que necesitas.');
+    return;
+  }
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('req-nombre').value = '';
+  document.getElementById('req-matricula').value = '';
+  document.getElementById('req-materia').value = '';
+  document.getElementById('req-tipo').value = '';
+  document.getElementById('req-descripcion').value = '';
+  setTimeout(()=>{ document.getElementById('successMsg').style.display = 'none'; }, 6000);
+}
+
+// ─── AUTO-RESIZE TEXTAREA ───
+document.getElementById('chatInput').addEventListener('input', function(){
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+</script>
+</body>
+</html>
