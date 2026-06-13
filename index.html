@@ -764,60 +764,25 @@ footer a{color:var(--gold-light)}footer a:hover{color:var(--gold)}
     <p class="section-label" id="solicitar-title">📬 Pide Material</p>
     <div class="form-card">
       <h3>¿No encuentras algo en la PVA?</h3>
-      <p>Completa este formulario y la profe recibirá una notificación automática en Teams. Subimos el material lo antes posible ✨</p>
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="req-nombre">Tu nombre</label>
-          <input type="text" id="req-nombre" class="form-control" placeholder="María García" autocomplete="name">
+      <p>Completa el formulario y la profe recibirá una notificación automática en Teams. Subimos el material lo antes posible ✨</p>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px">
+        <div style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 16px">
+          <span style="font-size:1.4rem;flex-shrink:0">📝</span>
+          <div>
+            <div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">¿Qué recibirás?</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.5">El formulario te pedirá tu nombre, matrícula, materia y qué material necesitas. La profe lo recibe al instante en Teams.</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="req-matricula">Matrícula</label>
-          <input type="text" id="req-matricula" class="form-control" placeholder="2024XXXX">
-        </div>
-        <div class="form-group">
-          <label for="req-materia">Materia</label>
-          <select id="req-materia" class="form-control">
-            <option value="">— Selecciona —</option>
-            <option>Gestión de Comunicación en Tiempos de Crisis</option>
-            <option>Teoría de la Comunicación</option>
-            <option>Comunicación Digital</option>
-            <option>Marketing Digital</option>
-            <option>Publicidad</option>
-            <option>Asesoría de Tesis</option>
-            <option>Opinión Pública</option>
-            <option>Identidad e Imagen Corporativa</option>
-            <option>Diseño de Planes de Comunicación</option>
-            <option>Comunicación Interna y Externa</option>
-            <option>Estudio de Medios</option>
-            <option>Gestión del Mercadeo en Comunicación Corporativa</option>
-            <option>Otra materia</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="req-tipo">Tipo de material</label>
-          <select id="req-tipo" class="form-control">
-            <option value="">— Selecciona —</option>
-            <option>Sílabo / Programa</option>
-            <option>Lectura / Artículo</option>
-            <option>Presentación de clase</option>
-            <option>Rúbrica de evaluación</option>
-            <option>Plantilla de trabajo</option>
-            <option>Caso de estudio</option>
-            <option>Guía / Tutorial</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="form-group form-full">
-          <label for="req-descripcion">¿Qué necesitas exactamente?</label>
-          <textarea id="req-descripcion" class="form-control" rows="3" placeholder="Ej: La rúbrica actualizada del examen práctico de podcast del tema 6..." style="resize:vertical"></textarea>
-        </div>
-      </div>
-      <button class="btn-send" onclick="submitRequest()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-        Enviar solicitud
-      </button>
-      <div class="success-msg" id="successMsg" role="alert">
-        ✅ ¡Solicitud enviada! La profe recibirá una notificación en Teams. Revisa la PVA en las próximas 24-48 horas.
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CK8XQOGiqk2RgFs7yO6E-n4Dwj9_K0FHqt7jKNLf1mhUNDlON01COFZENFlGUFlRREpKMjdZRVlMMy4u"
+           target="_blank"
+           rel="noopener"
+           class="btn-send"
+           style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;width:fit-content"
+           aria-label="Abrir formulario de solicitud de material en Microsoft Forms">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          Ir al formulario
+        </a>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.45);margin-top:-6px">Se abre en una pestaña nueva · Powered by Microsoft Forms</p>
       </div>
     </div>
   </section>
@@ -943,13 +908,13 @@ const FAQs = {
   'tesis': 'Para tu tesis te recomiendo: 📓 **NotebookLM** (analiza tus fuentes), 🔍 **Perplexity** (investigación con citas), 📚 **Scribbr** (referencias APA 7) y la **Plantilla APA 7** del Hub. ¡Mucho éxito! 🎓',
   'sílabo': 'El sílabo está en la **PVA** dentro de tu curso. Ingresa en [campusvirtual.pucmm.edu.do](https://campusvirtual.pucmm.edu.do/moodle/my/) → selecciona tu materia → "Presentación del Curso". 📚',
   'silabo': 'El sílabo está en la **PVA** dentro de tu curso. Ingresa en [campusvirtual.pucmm.edu.do](https://campusvirtual.pucmm.edu.do/moodle/my/) → selecciona tu materia → "Presentación del Curso". 📚',
-  'material': '¿No encuentras el material en la PVA? Usa el formulario "📬 Pide Material" más abajo en esta página y la profe recibirá una notificación automática en Teams. ¡Suele resolverse en 24-48 horas! 🚀',
+  'material': '¿No encuentras el material en la PVA? Usa el formulario [📬 Pide Material](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CK8XQOGiqk2RgFs7yO6E-n4Dwj9_K0FHqt7jKNLf1mhUNDlON01COFZENFlGUFlRREpKMjdZRVlMMy4u) y la profe recibirá una notificación automática en Teams. ¡Suele resolverse en 24-48 horas! 🚀',
   'trámite': 'Los trámites administrativos (certificaciones, constancias, etc.) se gestionan en **Campus Solutions**: [micampus.pucmm.edu.do](https://micampus.pucmm.edu.do) → módulo de Servicios al Estudiante. 🏛️',
   'tramite': 'Los trámites administrativos se gestionan en **Campus Solutions**: [micampus.pucmm.edu.do](https://micampus.pucmm.edu.do) → módulo de Servicios al Estudiante. 🏛️',
   'pva': 'Accede a la PVA con tu usuario y contraseña institucional PUCMM en [campusvirtual.pucmm.edu.do](https://campusvirtual.pucmm.edu.do/moodle/my/) (los mismos del correo @ce.pucmm.edu.do). 🔑',
   'teams': 'Busca el equipo de tu materia en **Microsoft Teams** con tu cuenta PUCMM (@ce.pucmm.edu.do). Si no tienes acceso, escríbele directamente a la profesora por Teams. 💬',
-  'rúbrica': 'Las rúbricas están en el **Hub de Recursos** según la materia. Si no aparece la que buscas, solicítala con el formulario "📬 Pide Material". 📋',
-  'rubrica': 'Las rúbricas están en el **Hub de Recursos** según la materia. Si no aparece la que buscas, solicítala con el formulario "📬 Pide Material". 📋',
+  'rúbrica': 'Las rúbricas están en el **Hub de Recursos** según la materia. Si no aparece la que buscas, solicítala con el formulario [📬 Pide Material](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CK8XQOGiqk2RgFs7yO6E-n4Dwj9_K0FHqt7jKNLf1mhUNDlON01COFZENFlGUFlRREpKMjdZRVlMMy4u). 📋',
+  'rubrica': 'Las rúbricas están en el **Hub de Recursos** según la materia. Si no aparece la que buscas, solicítala con el formulario [📬 Pide Material](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CK8XQOGiqk2RgFs7yO6E-n4Dwj9_K0FHqt7jKNLf1mhUNDlON01COFZENFlGUFlRREpKMjdZRVlMMy4u). 📋',
 };
 
 function getBotResponse(msg) {
